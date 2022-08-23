@@ -6,91 +6,97 @@ export default class DoublyLinkedList {
   }
 
   append(item) {
-    let tempNode = this.start;
-    while (tempNode.next !== null) {
-      tempNode = tempNode.next;
+    let currentNode = this.start;
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next;
     }
-    tempNode.next = new DoublyLinkedListNode(item, tempNode===this.start ? null : tempNode, null);
+    currentNode.next = new DoublyLinkedListNode(
+      item,
+      currentNode === this.start ? null : currentNode,
+      null
+    );
   }
 
   prepend(item) {
-    let tempNode = new DoublyLinkedListNode(item, this.start, this.start.next);
-    this.start.next.prev = tempNode;
-    this.start.next = tempNode;
+    let currentNode = new DoublyLinkedListNode(
+      item,
+      this.start,
+      this.start.next
+    );
+    this.start.next.prev = currentNode;
+    this.start.next = currentNode;
   }
 
   insert(item, index) {
     if (this.length() < index) {
-      console.log('appending');
       this.append(item);
     } else {
-      console.log('inserting');
-      let tempNode = this.start;
+      let currentNode = this.start;
       let i = 0;
       while (i !== index) {
         i++;
-        tempNode = tempNode.next;
+        currentNode = currentNode.next;
       }
-      let nextNode = tempNode.next;
-      tempNode.next = new DoublyLinkedListNode(item, tempNode, nextNode);
-      nextNode.prev = tempNode.next;
+      let nextNode = currentNode.next;
+      currentNode.next = new DoublyLinkedListNode(item, currentNode, nextNode);
+      nextNode.prev = currentNode.next;
     }
   }
 
   print() {
     console.log('----------------');
-    let tempNode = this.start.next;
-    while (tempNode !== null) {
-      const p = tempNode.prev? tempNode.prev.item : null;
-      const n = tempNode.next? tempNode.next.item : null;
-      console.log(tempNode.item, p, n);
-      tempNode = tempNode.next;
+    let currentNode = this.start.next;
+    while (currentNode !== null) {
+      const p = currentNode.prev ? currentNode.prev.item : null;
+      const n = currentNode.next ? currentNode.next.item : null;
+      console.log(currentNode.item, p, n);
+      currentNode = currentNode.next;
     }
   }
 
   length() {
-    let tempNode = this.start;
+    let currentNode = this.start;
     let listLength = 0;
-    while (tempNode.next !== null) {
+    while (currentNode.next !== null) {
       listLength++;
-      tempNode = tempNode.next;
+      currentNode = currentNode.next;
     }
     return listLength;
   }
 
   deleteItem(item) {
-    let tempNode = this.start;
-    while (tempNode.next !== null) {
-      if (tempNode.next.item === item) {
-        tempNode.next = tempNode.next.next;
-        tempNode.next.prev = tempNode;
+    let currentNode = this.start;
+    while (currentNode.next !== null) {
+      if (currentNode.next.item === item) {
+        currentNode.next = currentNode.next.next;
+        currentNode.next.prev = currentNode;
         break;
       }
-      tempNode = tempNode.next;
+      currentNode = currentNode.next;
     }
   }
 
   findIndex(item) {
-    let tempNode = this.start.next;
+    let currentNode = this.start.next;
     let index = 0;
-    while (tempNode !== null) {
-      if (tempNode.item === item) {
+    while (currentNode !== null) {
+      if (currentNode.item === item) {
         break;
       }
       index++;
-      tempNode = tempNode.next;
+      currentNode = currentNode.next;
     }
     return index < this.length() ? index : -1;
   }
 
   toString() {
     let returnString = '';
-    let tempNode = this.start.next;
-    while (tempNode !== null) {
+    let currentNode = this.start.next;
+    while (currentNode !== null) {
       returnString = returnString
-        ? `${returnString},${tempNode.item.toString()}`
-        : tempNode.item.toString();
-      tempNode = tempNode.next;
+        ? `${returnString},${currentNode.item.toString()}`
+        : currentNode.item.toString();
+      currentNode = currentNode.next;
     }
     return returnString;
   }
@@ -100,7 +106,7 @@ console.log('hello');
 const a = new DoublyLinkedList();
 a.append(5);
 a.append(55);
-a.insert(1,1);
+a.insert(1, 1);
 a.append(543);
 a.append(52);
 a.prepend(7);
