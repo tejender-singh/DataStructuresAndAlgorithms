@@ -11,4 +11,5 @@ only, and it is **not** meant to be used for production.*
 ## Data Structures
 
 * [Linked List](src/DataStructures/LinkedLists)
+* [Doubly Linked List](src/DataStructures/DoublyLinkedLists)
 
