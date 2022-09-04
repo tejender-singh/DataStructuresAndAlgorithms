@@ -6,7 +6,7 @@ export default class Queue {
   }
 
   isEmpty() {
-    return this.list.start.next === null;
+    return this.list.start === null;
   }
   enqueue(item) {
     this.list.append(item);
@@ -15,16 +15,16 @@ export default class Queue {
     if (this.isEmpty()) {
       return null;
     }
-    const returnValue = this.list.start.next.item;
+    const returnValue = this.list.start.item;
     this.list.deleteItem(returnValue);
     return returnValue;
   }
 
-  peak() {
+  peek() {
     if (this.isEmpty()) {
       return null;
     }
-    return this.list.start.next.item;
+    return this.list.start.item;
   }
 
   toString() {

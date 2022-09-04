@@ -6,7 +6,7 @@ export default class Stack {
   }
 
   isEmpty() {
-    return this.list.start.next === null;
+    return this.list.start === null;
   }
 
   push(item) {
@@ -14,42 +14,25 @@ export default class Stack {
   }
 
   pop() {
-    if(this.isEmpty()){
-        return null;
+    if (this.isEmpty()) {
+      return null;
     }
-    let currentNode = this.list.start;
-    while (currentNode.next.next !== null) {
-      currentNode = currentNode.next;
-    }
-    const returnValue = currentNode.next.item;
-    currentNode.next = null;
+    const lastIndex = this.list.length() - 1;
+    const returnValue = this.list.getItemAtIndex(lastIndex);
+    this.list.deleteItemAtIndex(lastIndex);
     return returnValue;
   }
 
-  peak() {
-    if(this.isEmpty()){
-        return null;
+  peek() {
+    if (this.isEmpty()) {
+      return null;
     }
-    let currentNode = this.list.start;
-    while (currentNode.next.next !== null) {
-      currentNode = currentNode.next;
-    }
-    return currentNode.next.item;
+    const lastIndex = this.list.length() - 1;
+    const returnValue = this.list.getItemAtIndex(lastIndex);
+    return returnValue;
   }
 
   toString() {
     return this.list.toString();
   }
 }
-const s = new Stack();
-s.push(5);
-s.push(4);
-s.push(3);
-s.pop();
-s.pop();
-s.pop();
-console.log(s.toString());
-console.log(s.peak());
-console.log(s.toString());
-console.log(s.pop());
-console.log(s.toString());

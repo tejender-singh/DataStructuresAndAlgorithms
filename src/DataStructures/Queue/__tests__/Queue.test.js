@@ -15,12 +15,12 @@ describe('Queue', () => {
     expect(queue.toString()).toBe('5,4');
   });
 
-  it('should peak values', () => {
+  it('should peek values', () => {
     const queue = new Queue();
     queue.enqueue(5);
     queue.enqueue(4);
     expect(queue.isEmpty()).toBe(false);
-    expect(queue.peak()).toBe(5);
+    expect(queue.peek()).toBe(5);
     expect(queue.toString()).toBe('5,4');
   });
 
@@ -33,9 +33,9 @@ describe('Queue', () => {
     expect(queue.toString()).toBe('4');
   });
 
-  it('should peak null if queue is empty', () => {
+  it('should peek null if queue is empty', () => {
     const queue = new Queue();
-    expect(queue.peak()).toBe(null);
+    expect(queue.peek()).toBe(null);
     expect(queue.toString()).toBe('');
   });
 

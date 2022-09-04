@@ -1,30 +1,46 @@
 import LinkedListNode from './LinkedListNode';
 
 export default class LinkedList {
+  start = null;
+  end = null;
+
   constructor() {
-    this.start = new LinkedListNode(null, null);
   }
 
   append(item) {
-    let tempNode = this.start;
-    while (tempNode.next !== null) {
-      tempNode = tempNode.next;
+    if(this.start === null){
+      this.start = new LinkedListNode(item, null);
+      this.end = this.start;
     }
-    tempNode.next = new LinkedListNode(item, null);
+    else{
+      let tempNode = this.start;
+      while (tempNode.next !== null) {
+        tempNode = tempNode.next;
+      }
+      tempNode.next = new LinkedListNode(item, null);  
+      this.end = tempNode.next;
+    }
   }
 
   insert(item, index) {
-    if (this.length() < index) {
+    const length = this.length();
+    if (length <= index) {
       this.append(item);
     } else {
-      let tempNode = this.start;
+      let currentNode = this.start;
       let i = 0;
-      while (i !== index) {
-        i++;
-        tempNode = tempNode.next;
+      if(index===0){
+        currentNode = new LinkedListNode(item, this.start);
+        this.start = currentNode;
+      } else{
+        let prevNode;
+        while (i !== index) {
+          i++;
+          prevNode = currentNode;
+          currentNode = currentNode.next;
+        }
+        prevNode.next = new LinkedListNode(item, currentNode);  
       }
-      let nextNode = tempNode.next;
-      tempNode.next = new LinkedListNode(item, nextNode);
     }
   }
 
@@ -40,7 +56,7 @@ export default class LinkedList {
   length() {
     let tempNode = this.start;
     let listLength = 0;
-    while (tempNode.next !== null) {
+    while (tempNode !== null) {
       listLength++;
       tempNode = tempNode.next;
     }
@@ -48,31 +64,38 @@ export default class LinkedList {
   }
 
   deleteItem(item) {
-    let tempNode = this.start;
-    while (tempNode.next !== null) {
-      if (tempNode.next.item === item) {
-        tempNode.next = tempNode.next.next;
+    let currentNode = this.start;
+    let prevNode = this.start;
+    while (currentNode !== null) {
+      if (currentNode.item === item) {
+        if(currentNode === this.start){
+          this.start = this.start.next;
+        } else {
+          prevNode.next = currentNode.next;
+        }
         break;
       }
-      tempNode = tempNode.next;
+      prevNode = currentNode;
+      currentNode = currentNode.next;
     }
   }
 
   findIndex(item) {
-    let tempNode = this.start.next;
+    let currentNode = this.start;
     let index = 0;
-    while (tempNode !== null) {
-      if (tempNode.item === item) {
+    while (currentNode !== null) {
+      if (currentNode.item === item) {
         break;
       }
       index++;
-      tempNode = tempNode.next;
+      currentNode = currentNode.next;
     }
     return index < this.length() ? index : -1;
   }
 
   reverse() {
-    let currNode = this.start.next;
+    let currNode = this.start;
+    this.end = this.start;
     let prevNode = null;
     let nextNode = null;
 
@@ -82,19 +105,60 @@ export default class LinkedList {
       prevNode = currNode;
       currNode = nextNode;
     }
-    this.start.next = prevNode;
+    this.start = prevNode;
   }
 
   toString() {
     let returnString = '';
-    let tempNode = this.start.next;
+    let tempNode = this.start;
     while (tempNode !== null) {
-      //   console.log(tempNode.item);
       returnString = returnString
         ? `${returnString},${tempNode.item.toString()}`
         : tempNode.item.toString();
       tempNode = tempNode.next;
     }
     return returnString;
+  }
+
+  getItemAtIndex(index){
+    if (this.length() < index) {
+      return null;
+    } else {
+      let currentNode = this.start;
+      let i = 0;
+      while (i !== index) {
+        i++;
+        currentNode = currentNode.next;
+      }
+      return currentNode.item;
+    }
+  }
+
+
+  deleteItemAtIndex(index){
+    const listLength = this.length();
+    if (listLength < index) {
+      return null;
+    } else {
+      let currentNode = this.start;
+      let prevNode;
+      let i = 0;
+      while (i !== index) {
+        i++;
+        prevNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      const item = currentNode.item;
+      if(i===0){
+        this.start = this.start.next;
+        return item;
+      } else {
+        prevNode.next = currentNode.next;
+        if(i===listLength-1){
+          this.end = prevNode;
+        }
+        return item;  
+      }
+    }
   }
 }

@@ -15,11 +15,11 @@ describe('Stack', () => {
     expect(stack.toString()).toBe('5,4');
   });
 
-  it('should peak values', () => {
+  it('should peek values', () => {
     const stack = new Stack();
     stack.push(5);
     stack.push(4);
-    expect(stack.peak()).toBe(4);
+    expect(stack.peek()).toBe(4);
     expect(stack.toString()).toBe('5,4');
   });
 
@@ -31,9 +31,9 @@ describe('Stack', () => {
     expect(stack.toString()).toBe('5');
   });
 
-  it('should peak null if stack is empty', () => {
+  it('should peek null if stack is empty', () => {
     const stack = new Stack();
-    expect(stack.peak()).toBe(null);
+    expect(stack.peek()).toBe(null);
   });
 
   it('should pop null if stack is empty', () => {
