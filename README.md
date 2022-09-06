@@ -15,3 +15,4 @@ only, and it is **not** meant to be used for production.*
 * [Queue](src/DataStructures/Queue)
 * [Stack](src/DataStructures/Stack)
 
+* [SelectionSort](src/Algorithms/SelectionSort)
