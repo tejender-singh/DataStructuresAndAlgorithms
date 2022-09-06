@@ -52,7 +52,6 @@ describe('DoublyLinkedList', () => {
     const third = doublyLinkedList.start.next.next.next;
     const fourth = doublyLinkedList.start.next.next.next.next;
 
-    doublyLinkedList.print();
     expect(first.next).toBe(second);
     expect(first.prev).toBe(null);
     expect(second.next).toBe(third);

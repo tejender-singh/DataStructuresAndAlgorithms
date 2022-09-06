@@ -16,3 +16,4 @@ only, and it is **not** meant to be used for production.*
 * [Stack](src/DataStructures/Stack)
 
 * [SelectionSort](src/Algorithms/SelectionSort)
+* [MergeSort](src/Algorithms/MergeSort)

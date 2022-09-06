@@ -44,7 +44,6 @@ export default class DoublyLinkedList {
   }
 
   print() {
-    console.log('----------------');
     let currentNode = this.start.next;
     while (currentNode !== null) {
       const p = currentNode.prev ? currentNode.prev.item : null;
@@ -101,15 +100,3 @@ export default class DoublyLinkedList {
     return returnString;
   }
 }
-
-console.log('hello');
-const a = new DoublyLinkedList();
-a.append(5);
-a.append(55);
-a.insert(1, 1);
-a.append(543);
-a.append(52);
-a.prepend(7);
-a.prepend(6);
-a.deleteItem(543);
-a.print();
