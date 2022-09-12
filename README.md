@@ -16,5 +16,7 @@ only, and it is **not** meant to be used for production.*
 * [Stack](src/DataStructures/Stack)
 * [Hash Table](src/DataStructures/HashTable)
 
+## Algorithms
+
 * [SelectionSort](src/Algorithms/SelectionSort)
 * [MergeSort](src/Algorithms/MergeSort)
