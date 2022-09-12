@@ -14,6 +14,7 @@ only, and it is **not** meant to be used for production.*
 * [Doubly Linked List](src/DataStructures/DoublyLinkedLists)
 * [Queue](src/DataStructures/Queue)
 * [Stack](src/DataStructures/Stack)
+* [Hash Table](src/DataStructures/HashTable)
 
 * [SelectionSort](src/Algorithms/SelectionSort)
 * [MergeSort](src/Algorithms/MergeSort)
