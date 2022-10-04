@@ -15,8 +15,9 @@ only, and it is **not** meant to be used for production.*
 * [Queue](src/DataStructures/Queue)
 * [Stack](src/DataStructures/Stack)
 * [Hash Table](src/DataStructures/HashTable)
+* [Binary Tree](src/DataStructures/BinaryTree)
 
 ## Algorithms
 
-* [SelectionSort](src/Algorithms/SelectionSort)
-* [MergeSort](src/Algorithms/MergeSort)
+* [Selection Sort](src/Algorithms/SelectionSort)
+* [Merge Sort](src/Algorithms/MergeSort)
