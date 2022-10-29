@@ -16,6 +16,8 @@ only, and it is **not** meant to be used for production.*
 * [Stack](src/DataStructures/Stack)
 * [Hash Table](src/DataStructures/HashTable)
 * [Binary Tree](src/DataStructures/BinaryTree)
+* [Binary Search Tree](src/DataStructures/BinarySearchTree)
+* [AVL Tree](src/DataStructures/AVLTree)
 
 ## Algorithms
 
